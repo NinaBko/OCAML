@@ -48,11 +48,30 @@ let find_path graph =
 let string_of_path path = String.concat " -> " (List.map (fun x -> string_of_int x) path)
 
 (*Create a path with edges from the path we found *)
-let create_edge_path path = 
-  let rec loop path graph = 
+(*Create a list of all edges labels used in the path*)
+let create_edge_path path graph= 
+  let rec loop path graph acu= 
     match path with 
-    | _ :: [] | [] -> graph
-    | x :: y :: rest -> new_arc graph x y 
+    | _::[]|[]-> acu
+    | x :: y :: rest -> loop (List.tl path) graph (find_arc graph x y :: acu)   
+  in 
+  loop path graph []
 
-(* Find the maxi augmenting value 
-   let find_max_aug path graph = *)
+(*Find the max flow of a graph*)
+let find_max_flow graph =
+  let arc_list = out_arcs graph.gr graph.source in 
+  let rec loop l acu =
+    match l with
+    |[]->acu
+    |(_,(_,y))::rest->if y>acu then loop rest y else loop rest acu  
+  in 
+  loop arc_list 0
+
+(* Find the max augmenting value *)
+let find_max_aug path graph=
+  let rec loop path acu =
+    match path with
+    |[]->acu
+    |(x,y)::rest-> if (y-x)<acu then loop rest x-y else loop rest acu
+  in
+  loop path (find_max_flow graph)
