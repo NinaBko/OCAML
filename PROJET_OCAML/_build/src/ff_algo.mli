@@ -13,9 +13,9 @@ val init_residual_graph: int graph -> id -> id -> res_graph
 (*Find a path in the residual graph from source to destination node*)
 val find_path: res_graph -> path
 
-(*
-val find_max_aug: res_graph ->path -> int
 
+val find_max_aug: path -> res_graph -> int
+(*
 val apply_aug: res_graph -> path -> int -> res_graph
 
 val ff: int graph -> res_graph

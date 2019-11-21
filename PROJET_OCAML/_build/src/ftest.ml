@@ -32,8 +32,7 @@ let () =
   let res_graph = Ff_algo.init_residual_graph graph_int _source _sink in
   let path_test = Ff_algo.find_path res_graph in
   let str = Ff_algo.string_of_path path_test in
-  let () = Printf.printf "%s%!\n" str in
-
+  let () = Printf.printf "path %s \n  max aug : %d%!\n" str (Ff_algo.find_max_aug path_test res_graph) in
   (* Rewrite the graph that has been read. *)
   (*let () = write_file outfile graph in*)
 

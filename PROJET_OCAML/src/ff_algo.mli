@@ -14,7 +14,7 @@ val init_residual_graph: int graph -> id -> id -> res_graph
 val find_path: res_graph -> path
 
 
-val find_max_aug: (int*int) list -> res_graph -> int
+val find_max_aug: path -> res_graph -> int
 (*
 val apply_aug: res_graph -> path -> int -> res_graph
 

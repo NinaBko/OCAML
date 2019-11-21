@@ -47,6 +47,9 @@ let find_path graph =
 (* Makes the path to string *)
 let string_of_path path = String.concat " -> " (List.map (fun x -> string_of_int x) path)
 
+
+
+
 (*Create a path with edges from the path we found *)
 (*Create a list of all edges labels used in the path*)
 let create_edge_path path graph= 
@@ -69,9 +72,11 @@ let find_max_flow graph =
 
 (* Find the max augmenting value *)
 let find_max_aug path graph=
+  let arc_list = create_edge_path path graph.gr in
   let rec loop path acu =
     match path with
     |[]->acu
-    |(x,y)::rest-> if (y-x)<acu then loop rest x-y else loop rest acu
+    |Some(x,y)::rest-> if (y-x)<acu then loop rest y-x else loop rest acu
+    |None::rest->failwith "Erreur label arc dans path"
   in
-  loop path (find_max_flow graph)
+  loop arc_list (find_max_flow graph)
