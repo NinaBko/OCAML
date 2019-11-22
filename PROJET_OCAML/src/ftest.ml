@@ -29,13 +29,20 @@ let () =
   (*let graph_test = Ff_algo.init_residual_graph graph_int 0 5 in
 
     let graph_test_str = Ff_algo.get_graph graph_test in*)
-  let res_graph = Ff_algo.init_residual_graph graph_int _source _sink in
-  let path_test = Ff_algo.find_path res_graph in
-  let str = Ff_algo.string_of_path path_test in
-  let () = Printf.printf "path %s \n  max aug : %d%!\n" str (Ff_algo.find_max_aug path_test res_graph) in
+  (*let res_graph = Ff_algo.init_residual_graph graph_int _source _sink in
+    let path_test = Ff_algo.find_path res_graph in
+    let str = Ff_algo.string_of_path path_test in
+    let aug = Ff_algo.find_max_aug path_test res_graph in
+    let () = Printf.printf "path %s \n  max aug : %d%!\n" str aug in
+    let res_graph_aug = Ff_algo.apply_aug path_test res_graph aug in 
+  *)
+  let final_graph = Ff_algo.ff graph_int _source _sink in 
+
+
+
   (* Rewrite the graph that has been read. *)
   (*let () = write_file outfile graph in*)
 
-  let () = export outfile graph in
+  let () = export outfile (Ff_algo.get_graph final_graph) in
   ()
 
