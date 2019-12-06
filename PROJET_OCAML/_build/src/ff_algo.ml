@@ -44,7 +44,7 @@ let find_path graph =
       in
       find_arc arcs
   in
-  match loop graph [graph.source] [] with
+  match loop graph [graph.source] [graph.source] with
   | [] -> []
   | p -> List.rev p
 
@@ -85,7 +85,7 @@ let find_max_aug path graph =
 let rec apply_aug path graph aug = 
   match path with
   |_::[]|[] -> graph
-  |x::y::rest -> apply_aug (y::rest) {graph with  gr =Tools.add_arc_flow graph.gr x y aug} aug
+  |x::y::rest -> apply_aug (y::rest) {graph with  gr =Tools.add_arc_flow (Tools.add_arc_capacity graph.gr y x aug) x y aug} aug
 
 
 let ff graph source dest =

@@ -16,4 +16,10 @@ let add_arc gr id1 id2 n =
 let add_arc_flow gr id1 id2 n = 
   match find_arc gr id1 id2 with
   | Some (x,y) -> new_arc gr id1 id2 ((x + n),y)
-  | None -> new_arc gr id1 id2 (n,n)
+  | None -> new_arc gr id1 id2 (0,n)
+
+
+let add_arc_capacity gr id1 id2 n = 
+  match find_arc gr id1 id2 with
+  | Some (x,y) -> new_arc gr id1 id2 (x,(y+n))
+  | None -> new_arc gr id1 id2 (0,n)

@@ -36,7 +36,7 @@
 # Target: src/ff_algo.cmx, tags: { compile, extension:cmx, extension:ml, file:src/ff_algo.cmx, file:src/ff_algo.ml, implem, include, native, ocaml, quiet, traverse }
 /home/commetud/GEI/OCaml/.opam/4.08.1/bin/ocamlopt.opt -c -I src -o src/ff_algo.cmx src/ff_algo.ml
 # Target: src/ftest.cmx, tags: { compile, extension:cmx, extension:ml, file:src/ftest.cmx, file:src/ftest.ml, implem, include, native, ocaml, quiet, traverse }
-/home/commetud/GEI/OCaml/.opam/4.08.1/bin/ocamlopt.opt -c -I src -o src/ftest.cmx src/ftest.ml
+/home/commetud/GEI/OCaml/.opam/4.08.1/bin/ocamlopt.opt -c -I src -o src/ftest.cmx src/ftest.ml # cached
 # Target: src/ftest.native, tags: { dont_link_with, extension:native, file:src/ftest.native, include, link, native, ocaml, program, quiet, traverse }
 /home/commetud/GEI/OCaml/.opam/4.08.1/bin/ocamlopt.opt -I src src/graph.cmx src/tools.cmx src/ff_algo.cmx src/gfile.cmx src/ftest.cmx -o src/ftest.native
 # Compilation successful.
