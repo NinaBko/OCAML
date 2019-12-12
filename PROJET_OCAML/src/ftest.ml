@@ -22,27 +22,13 @@ let () =
   (* Open file *)
   let graph = from_file infile in
 
+  (*Convert the string graph to an int graph*)
   let graph_int = Tools.gmap graph (fun x -> int_of_string x) in
 
-  (*let graph_test = Tools.gmap graph (fun x -> x^"a") in*)
-  (*let graph_test = Tools.add_arc graph_int 0 1 100 in*)
-  (*let graph_test = Ff_algo.init_residual_graph graph_int 0 5 in
+  (*Apply the Ford-Fulkerson algorithm*)
+  let final_graph = Ff_algo.concat_graph (Ff_algo.ff graph_int _source _sink).gr_bis in
 
-    let graph_test_str = Ff_algo.get_graph graph_test in*)
-  (*let res_graph = Ff_algo.init_residual_graph graph_int _source _sink in
-    let path_test = Ff_algo.find_path res_graph in
-    let str = Ff_algo.string_of_path path_test in
-    let aug = Ff_algo.find_max_aug path_test res_graph in
-    let () = Printf.printf "path %s \n  max aug : %d%!\n" str aug in
-    let res_graph_aug = Ff_algo.apply_aug path_test res_graph aug in 
-  *)
-  let final_graph = Ff_algo.ff graph_int _source _sink in 
-
-
-
-  (* Rewrite the graph that has been read. *)
-  (*let () = write_file outfile graph in*)
-
+  (*create the file of the final graph*)
   let () = export outfile (Ff_algo.get_graph final_graph) in
   ()
 
