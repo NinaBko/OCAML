@@ -1,16 +1,5 @@
-Base project for Ocaml project on Ford-Fulkerson. This project contains some simple configuration files to facilitate editing Ocaml in VSCode.
+Niveau d'avancement : algorithme de Ford Flukerson fini avec plusieurs graphes de test, pas d'implémentation de cas concret
 
-To use, you should install the *OCaml* extension in VSCode. Other extensions might work as well but make sure there is only one installed.
-Then open VSCode in the root directory of this repository.
-
-Features :
- - full compilation as VSCode build task (Ctrl+Shift+b)
- - highlights of compilation errors as you type
- - code completion
- - automatic indentation on file save
-
-
-A makefile also provides basic automation :
- - `make` to compile. This creates an ftest.native executable
- - `make format` to indent the entire project
-
+Pour compiler: make 
+Pour exécuter : ./ftest.native graph_test node_depart node_arrivee fichier_sortie
+Pour exporter en format dot : test.dot > test.svg
